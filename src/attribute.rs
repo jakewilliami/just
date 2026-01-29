@@ -33,6 +33,9 @@ pub(crate) enum Attribute<'src> {
   NoExitMessage,
   NoQuiet,
   Openbsd,
+  Freebsd,
+  Dragonfly,
+  Netbsd,
   Parallel,
   PositionalArguments,
   Private,
@@ -53,6 +56,9 @@ impl AttributeDiscriminant {
       | Self::NoExitMessage
       | Self::NoQuiet
       | Self::Openbsd
+      | Self::Freebsd
+      | Self::Dragonfly
+      | Self::Netbsd
       | Self::Parallel
       | Self::PositionalArguments
       | Self::Private
@@ -189,6 +195,9 @@ impl<'src> Attribute<'src> {
       AttributeDiscriminant::NoExitMessage => Self::NoExitMessage,
       AttributeDiscriminant::NoQuiet => Self::NoQuiet,
       AttributeDiscriminant::Openbsd => Self::Openbsd,
+      AttributeDiscriminant::Freebsd => Self::Freebsd,
+      AttributeDiscriminant::Dragonfly => Self::Dragonfly,
+      AttributeDiscriminant::Netbsd => Self::Netbsd,
       AttributeDiscriminant::Parallel => Self::Parallel,
       AttributeDiscriminant::PositionalArguments => Self::PositionalArguments,
       AttributeDiscriminant::Private => Self::Private,
@@ -296,6 +305,9 @@ impl Display for Attribute<'_> {
       | Self::NoExitMessage
       | Self::NoQuiet
       | Self::Openbsd
+      | Self::Freebsd
+      | Self::Dragonfly
+      | Self::Netbsd
       | Self::Parallel
       | Self::PositionalArguments
       | Self::Private

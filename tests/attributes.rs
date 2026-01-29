@@ -8,6 +8,9 @@ fn all() {
       [macos]
       [linux]
       [openbsd]
+      [freebsd]
+      [dragonfly]
+      [netbsd]
       [unix]
       [windows]
       [no-exit-message]
@@ -47,7 +50,7 @@ fn multiple_attributes_one_line() {
   Test::new()
     .justfile(
       "
-      [macos,windows,linux,openbsd]
+      [macos,windows,linux,openbsd,freebsd,dragonfly,netbsd]
       [no-exit-message]
       foo:
         exit 1
@@ -62,7 +65,7 @@ fn multiple_attributes_one_line_error_message() {
   Test::new()
     .justfile(
       "
-      [macos,windows linux,openbsd]
+      [macos,windows linux,openbsd,freebsd,dragonfly,netbsd]
       [no-exit-message]
       foo:
         exit 1
@@ -73,7 +76,7 @@ fn multiple_attributes_one_line_error_message() {
         error: Expected ']', ':', ',', or '(', but found identifier
          ——▶ justfile:1:16
           │
-        1 │ [macos,windows linux,openbsd]
+        1 │ [macos,windows linux,openbsd,freebsd,dragonfly,netbsd]
           │                ^^^^^
           ",
     )
@@ -85,7 +88,7 @@ fn multiple_attributes_one_line_duplicate_check() {
   Test::new()
     .justfile(
       "
-      [macos, windows, linux, openbsd]
+      [macos, windows, linux, openbsd, freebsd, dragonfly, netbsd]
       [linux]
       foo:
         exit 1
